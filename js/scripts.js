@@ -6,9 +6,13 @@ let pokemonList = [
 ];
 
 // show list of Pokémon and highlight Pokemon larger 1.5
-for (let i = 0; i < pokemonList.length; i++) {
-  if (pokemonList[i].height <= 1.5){
-    document.write('<h3>' + pokemonList[i].name + ' (height: ' + pokemonList[i].height + ')</h3>')
-  }else {document.write('<h3>' + pokemonList[i].name + ' (height: ' + pokemonList[i].height + ') - Wow, that\'s big!</h3>')
-  }
+function printArrayDetails(){
+  pokemonList.forEach(function (pokemon) {
+    if (pokemon.height <= 1.5){
+      document.write('<h3>' + pokemon.name + ' (height: ' + pokemon.height + ')</h3>')
+    }else {document.write('<h3>' + pokemon.name + ' (height: ' + pokemon.height + ') - Wow, that\'s big!</h3>')
+    }
+  })
 }
+
+printArrayDetails();
