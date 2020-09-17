@@ -1,3 +1,22 @@
+:root {
+  --primary-color: #ccf;
+  --secondary-color: #77fd;
+  --dark-grey: #2b2b2b;
+  --active-color: #ffd75f;
+  --light-grey: #eee;
+  --white: #fff;
+  --black: #000;
+
+  --font-16: 16px;
+  --font-18: 18px;
+  --font-20: 20px;
+  --font-24: 24px;
+  --font-30: 30px;
+
+  --font-light: 400;
+  --font-heavy: 700;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -22,4 +41,64 @@ h2 {
 h3 {
   font-size: 18px;
   font-weight: 700;
+}
+
+/* title
+*/
+.header {
+  background-color: #fff;
+  border-bottom: 1px solid var(--light-grey);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 3;
+}
+
+/* pokemon button list
+*/
+.table {
+  text-align: center;
+  margin-top: 95px;
+}
+
+.pokemon-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.pokemonNameButton {
+  border: none;
+  font-family: inherit;
+  background-color: var(--primary-color);
+  color: var(--white);
+  text-decoration: none;
+  width: 90%;
+  max-width: 400px;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 3px;
+  transition: 0.2s background-color;
+}
+
+.pokemonNameButton:hover,
+.pokemonNameButton:focus {
+  cursor: pointer;
+  background-color: var(--secondary-color);
+  color: var(--white);
+}
+
+/*
+responsive design
+*/
+@media all and (max-width: 768px) {
+  h1 {
+    font-size: 20px;
+  }
+  .table {
+    margin-top: 65px;
+  }
+  .pokemonNameButton {
+    max-width: 300px;
+  }
 }
