@@ -86,6 +86,12 @@ h3 {
   text-decoration: underline;
 }
 
+.modal-close:hover,
+.modal-close:active {
+  color: var(--secondary-color);
+  outline: none;
+}
+
 .text-block {
   display: inline-block;
 }
@@ -148,10 +154,10 @@ h3 {
 
 .pokemonNameButton:hover,
 .pokemonNameButton:focus {
-  border: none;
   cursor: pointer;
   background-color: var(--secondary-color);
   color: var(--white);
+  border: none;
   outline: none;
 }
 
