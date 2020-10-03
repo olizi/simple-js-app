@@ -1,26 +1,3 @@
-:root {
-  --primary-color: #ccf;
-  --secondary-color: #77fd;
-  --dark-grey: #2b2b2b;
-  --active-color: #ffd75f;
-  --light-grey: #eee;
-  --white: #fff;
-  --black: #000;
-
-  --font-16: 16px;
-  --font-18: 18px;
-  --font-20: 20px;
-  --font-24: 24px;
-  --font-30: 30px;
-
-  --font-light: 400;
-  --font-heavy: 700;
-}
-
-* {
-  box-sizing: border-box;
-}
-
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
@@ -43,186 +20,67 @@ h3 {
   font-weight: 700;
 }
 
-/* modal
+/* header with logo
 */
-#modal-container {
-  display: none;
-}
-
-#modal-container.is-visible {
-  position: fixed;
-  padding: 20px;
-  box-sizing: border-box;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999; 
-  overflow: auto; 
-  display: grid;
-  text-align: center;
-}
-
-.modal {
-  margin: auto;
-  grid-template-columns: 96 auto 40px;
-  grid-template-rows: 50% 50%;
-  box-sizing: border-box;
-  background: #fff;
-  padding: 20px;
-  width: 100%;
-  max-width: 600px;
-  text-align: left;
-  border-radius: 3px;
-}
-
-.modal-close {
-  float: right;
-  -webkit-appearance: none;
-  border: 0;
-  background: none;
-  color: var(--primary-color);
-  text-decoration: underline;
-}
-
-.modal-close:hover,
-.modal-close:active {
-  color: var(--secondary-color);
-  outline: none;
-}
-
-.text-block {
-  display: inline-block;
-}
-
-.modal h1 {
-  margin: 0px 0px 0px 20px;
-  color: var(--secondary-color);
-}
-
-.modal p {
-  margin: 0px 0px 0px 20px;
-  color: var(--secondary-color);
-}
-
-.modal img {
-  display: inline-block;
-  vertical-align: top;
-  width: 96px;
-  background: var(--primary-color);
-  border-radius: 3px;
-}
-
-/* title
-*/
-.header {
+.pokedex-header {
   background-color: #fff;
-  border-bottom: 1px solid var(--light-grey);
-  position: fixed;
-  top: 0;
-  width: 100%;
-  text-align: center;
-  z-index: 3;
+  border-bottom: 1px solid #eee;
 }
 
-/* pokemon button list
+.pokemon-logo {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.pokemon-typo {
+  margin-top: 11px;
+}
+
+/* .pokemon-search {
+  margin-left: 20px;
+} */
+
+/*loader
 */
-.table {
+.spinner-border {
+  color: #ccf;
+}
+
+/* Pokémon list
+*/
+.container {
+  margin-top: 80px;
   text-align: center;
-  margin-top: 95px;
 }
 
-.pokemon-list {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-.pokemonNameButton {
-  border: none;
+.list-group-item {
   font-family: inherit;
-  background-color: var(--primary-color);
-  color: var(--white);
-  text-decoration: none;
-  width: 90%;
-  max-width: 400px;
-  padding: 10px;
-  margin: 5px;
-  border-radius: 3px;
-  transition: 0.2s background-color;
+  color:  #77fd;
 }
 
-.pokemonNameButton:hover,
-.pokemonNameButton:focus {
+.list-group-item:hover {
   cursor: pointer;
-  background-color: var(--secondary-color);
-  color: var(--white);
-  border: none;
-  outline: none;
+  background-color: #77fd;
+  color: #fff;
 }
 
-/*
-loader
+.list-group-item:focus {
+  background-color:  #ccf;
+  color: #fff;
+}
+
+/* modal with Pokémon details
 */
-.loader {
-  margin:auto;
-  top:0;
-  left:0;
-  bottom:0;
-  right:0;
-  position:fixed;
-  z-index: 1;
-  border: 6px solid var(--light-grey);
-  border-radius: 50%;
-  border-top: 6px solid var(--secondary-color);
-  width: 40px;
-  height: 40px;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
-  animation: spin 2s linear infinite;
+.modal-body {
+  font-family: inherit;
+  text-align: center;
+  color:  #77fd;
 }
 
-/* Safari */
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/*
-responsive design
-*/
-@media all and (max-width: 768px) {
-  h1 {
-    font-size: 20px;
-  }
-  .table {
-    margin-top: 65px;
-  }
-  .pokemonNameButton {
-    max-width: 300px;
-  }
-  .modal {
-    max-width: 400px;
-  }
-}
-
-@media all and (max-width: 420px) {
-  .text-block {
-    display: block;
-  }
-  .modal h1 {
-    margin-left: 30px;
-    color: var(--secondary-color);
-  }
-  .modal p {
-    margin-left: 30px;
-    color: var(--secondary-color);
-  }
-  .modal img {
-    margin-left: 30px;
-  }
+.modal-img {
+  max-width: 100%;
+  max-height: 260px;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
