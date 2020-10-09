@@ -4,23 +4,23 @@ let pokemonRepository = (function () {
   let pokemonList = [];
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=649';
 
-// add Pokémon to the pokemonList array
+  // add Pokémon to the pokemonList array
   function add(pokemon) {
     if (
       typeof pokemon === 'object' &&
       'name' in pokemon &&
       'detailsUrl' in pokemon
     ) {
-      pokemonList.push(pokemon)
-    }else {alert('data type is not correct')}
+      pokemonList.push(pokemon);
+    }else {alert('data type is not correct');}
   }
 
-// return all items of pokemonList
+  // return all items of pokemonList
   function getAll() {
     return pokemonList;
   }
 
-// show loader
+  // show loader
   function showLoadingMessage() {
     let loadingStatus = document.querySelector('.container');
     let loadIndicator = document.createElement('div');
@@ -29,14 +29,14 @@ let pokemonRepository = (function () {
     loadingStatus.appendChild(loadIndicator);
   }
 
-// hide loader
+  // hide loader
   function hideLoadingMessage() {
     let loadingStatus = document.querySelector('.spinner-border');
     
     loadingStatus.classList.remove('spinner-border');
   }
 
-// create Pokémon List item + eventListener
+  // create Pokémon List item + eventListener
   function addListItem(pokemon) {
     let pokemonListOutput = document.querySelector('.list-group');
     let button = document.createElement('button');
@@ -48,10 +48,10 @@ let pokemonRepository = (function () {
     pokemonListOutput.appendChild(button);
     button.addEventListener('click', function () {
       showDetails(pokemon);
-    })
+    });
   }
 
-// load Pokémon name and url
+  // load Pokémon name and url
   function loadList() {
     showLoadingMessage();
     return fetch(apiUrl).then(function (response) {
@@ -67,35 +67,36 @@ let pokemonRepository = (function () {
       });
     }).catch(function (e) {
       console.error(e);
-    })
+    });
   }
 
-// load details of Pokémon
+  // load details of Pokémon
   function loadDetails(item) {
     showLoadingMessage();
     let url = item.detailsUrl;
     return fetch(url)
       .then(function (response) {
         return response.json();
-    })
-    .then(function (details) {
-      hideLoadingMessage();
-      // add details
-      item.name = details.name;
-      item.imageUrl = details.sprites.other.dream_world.front_default;
-      item.height = details.height;
-      item.weight = details.weight;
-      item.types = details.types;
-      item.abilities = details.abilities;
-    })
-    .catch(function (e) {
-      console.error(e);
-    });
+      })
+      .then(function (details) {
+        hideLoadingMessage();
+        // add details
+        item.name = details.name;
+        item.imageUrl = details.sprites.other.dream_world.front_default;
+        item.height = details.height;
+        item.weight = details.weight;
+        item.types = details.types;
+        item.abilities = details.abilities;
+      })
+      .catch(function (e) {
+        console.error(e);
+      });
   }
 
   // modal showing Pokémon details: name, image and height
   function showModal(item) {
     let modalBody = $('.modal-body');
+    // eslint-disable-next-line no-unused-vars
     let modalContainer = $('#modal-container').modal('show');
 
     // clear existing content
@@ -143,12 +144,12 @@ let pokemonRepository = (function () {
   }
 
   // log details of Pokémon
- function showDetails(pokemon) {
-  loadDetails(pokemon).then(function () {
-    showModal(pokemon);
+  function showDetails(pokemon) {
+    loadDetails(pokemon).then(function () {
+      showModal(pokemon);
     // console.log(pokemon);
-  });
-}
+    });
+  }
 
   return {
     add: add,
@@ -159,16 +160,6 @@ let pokemonRepository = (function () {
     showDetails: showDetails
   };
 })();
-
-// // search Pokémon by name
-// $(document).ready(function(){
-//   $('#pokemon-search').on('keyup', function() {
-//     let value = $(this).val().toLowerCase();
-//     $('.list-group-item').filter(function() {
-//       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-//     });
-//   });
-// });
 
 // genrate list of Pokémon
 pokemonRepository.loadList().then(function() {
