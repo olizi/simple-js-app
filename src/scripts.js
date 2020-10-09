@@ -2,26 +2,26 @@
 // IIFE
 let pokemonRepository = (function () {
 
-// list of Pokémon
+  // list of Pokémon
   let pokemonList = [];
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=950';
 
-// add a single item to the pokemonList array
+  // add a single item to the pokemonList array
   function add(pokemon) {
     if (
       typeof pokemon === 'object' &&
       'name' in pokemon &&
       'detailsUrl' in pokemon
     ) {
-      pokemonList.push(pokemon)
-    }else {alert('data type is not correct')}
+      pokemonList.push(pokemon);
+    }else {alert('data type is not correct');}
   }
 
-// return all items of pokemonList
+  // return all items of pokemonList
   function getAll() {
     return pokemonList;
   }
-// show loader
+  // show loader
   function showLoadingMessage() {
     let loadingStatus = document.querySelector('.table');
     let loadIndicator = document.createElement('div');
@@ -29,13 +29,13 @@ let pokemonRepository = (function () {
     loadingStatus.appendChild(loadIndicator);
   }
 
-// hide loader
+  // hide loader
   function hideLoadingMessage() {
     let loadingStatus = document.querySelector('.loader');
     loadingStatus.classList.remove('loader');
   }
 
-// create Pokémon List item + eventListener
+  // create Pokémon List item + eventListener
   function addListItem(pokemon) {
     let pokemonListOutput = document.querySelector('.pokemon-list');
     let listItem = document.createElement('li');
@@ -46,10 +46,10 @@ let pokemonRepository = (function () {
     pokemonListOutput.appendChild(listItem);
     button.addEventListener('click', function () {
       showDetails(pokemon);
-    })
+    });
   }
 
-// load Pokémon name and url
+  // load Pokémon name and url
   function loadList() {
     showLoadingMessage();
     return fetch(apiUrl).then(function (response) {
@@ -65,10 +65,10 @@ let pokemonRepository = (function () {
       });
     }).catch(function (e) {
       console.error(e);
-    })
+    });
   }
 
-// load details of Pokémon
+  // load details of Pokémon
   function loadDetails(item) {
     showLoadingMessage();
     let url = item.detailsUrl;
@@ -139,12 +139,12 @@ let pokemonRepository = (function () {
   }
 
   // log details of Pokémon
- function showDetails(pokemon) {
-  loadDetails(pokemon).then(function () {
-    showModal(pokemon.name, pokemon.height, pokemon.imageUrl);
+  function showDetails(pokemon) {
+    loadDetails(pokemon).then(function () {
+      showModal(pokemon.name, pokemon.height, pokemon.imageUrl);
     // console.log(pokemon);
-  });
-}
+    });
+  }
 
   return {
     add: add,
